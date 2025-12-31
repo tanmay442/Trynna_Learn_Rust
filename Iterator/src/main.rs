@@ -41,6 +41,8 @@ fn main() {
 
     let mut newvec : Vec<i16> = vec![1,2,23];
     intoIter(newvec);
+
+    Adapters();
 }
 
 //into_iter
@@ -66,3 +68,41 @@ fn whileLoops (mut a:Vec<i16>) -> Vec<i16> {
      return a
 }
 
+
+// === Adapters ====
+
+//Consuming Adapters (e.g., .sum()): These take ownership of the iterator and exhaust it (run it until the end) to produce a value.
+//Iterator Adapters (e.g., .map()): These take ownership of the iterator and wrap it into a new iterator. They are "lazy"—they don't actually do anything until you call a consuming adapter.
+
+
+fn Adapters(){
+    let v = vec![1,2,3,4];
+    
+    let vIter = v.iter();
+    
+    //.sum() is a consumer adapter
+    let sumV : i16 = vIter.sum();
+    println!("{}",sumV);
+    
+    //this would give me a error since the iterator is out of scope ##note the vector is not out of scope only iterator
+    //println!("{:?}",vIter);
+
+    //this is a iterator adapter
+    let v1Iter = v.iter();
+
+    //the v1iter is used up here
+    let v2Ier = v1Iter.map(|x| x+1 );
+    println!("{:?}",v2Ier); 
+
+    //the iterator v2ier is used up here
+    let result: Vec<_> = v2Ier.collect();
+    println!("{:?}",result);
+
+
+    //similiarly is the filter func
+    let v3Iter = v.iter().filter(|x| *x%2 == 0);
+    let result2: Vec<_> =v3Iter.collect();
+    println!("{:?}",result2)
+
+
+}
