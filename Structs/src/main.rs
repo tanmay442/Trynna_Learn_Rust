@@ -8,7 +8,12 @@ fn main() {
         age: 19
     };
     println!("{} is {} year old",pou.name, pou.age);
-
+    
+    let nou = user{
+        name: String::from("nou"),
+        age : 17
+    };
+    println!("{}, is {} years old",nou.name, nou.age);
 
     //if not for mut pou the line below reuslt in error
     pou.name=String::from("Meow");
