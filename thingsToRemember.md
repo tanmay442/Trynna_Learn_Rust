@@ -9,3 +9,6 @@ into_iter() takes the ownership fro the variable
 
 a string basically is  a coollection of chars or data that is stored in heap with main info like pointer , indexes and size limit or capacity in the stack
 string slices are just pointing to the parts of the collection instead of being the owner of the data in collection
+
+
+Generic <t, u > both t and u can have  a independent value or same value doesn,t matter that they gotta be diff , pne thing is htat teh func implementaion should be accordingly
